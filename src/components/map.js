@@ -1,16 +1,24 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import '../styles/map.css';
 
 const BaseMap = () => {
-  // const map = useRef(null);
-  // const [lat, lng] = map.current.props.center;
+  const [coordinates, setCoordinates] = useState([39, -98]);
+  const map = useRef(null);
+
+  const handleMoveEnd = () => {
+    setCoordinates(map.current.leafletElement.getCenter());
+  }
 
   return (
     <Map
-      center={[39, -98]}
+      center={coordinates}
       zoom={4}
-      // ref={map}
+      ref={map}
+      onMoveEnd={handleMoveEnd}
+      doubleClickZoom={false}
+      keyboard={false}
+      scrollWheelZoom={false}
     >
       <TileLayer
         url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
