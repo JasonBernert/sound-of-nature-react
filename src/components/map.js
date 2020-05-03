@@ -7,13 +7,14 @@ const BaseMap = () => {
   const map = useRef(null);
 
   const handleMoveEnd = () => {
-    setCoordinates(map.current.leafletElement.getCenter());
+    const {lat, lng} = map.current.leafletElement.getCenter();
+    setCoordinates([lat, lng]);
   }
 
   return (
     <Map
       center={coordinates}
-      zoom={4}
+      zoom={7}
       ref={map}
       onMoveEnd={handleMoveEnd}
       doubleClickZoom={false}
