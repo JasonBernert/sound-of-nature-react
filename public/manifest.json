@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Sound of nature",
+  "name": "The sound of nature - Location-based soundscape generator",
   "icons": [
     {
       "src": "favicon.ico",

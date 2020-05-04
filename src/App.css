@@ -14,19 +14,32 @@ body {
   color: white;
 }
 
-h1 {
+h1, h2 {
   font-weight: 300;
-  font-size: clamp(4em, 8vw, 8em); 
   line-height: 1em;
   letter-spacing: -0.05em;
   line-height: 1.125em;
-  margin: 0 1em 0.125em 1em;
+  margin: 0 1rem 0.25em 1rem;
+}
+
+h1 {
+  font-size: 4em;
+  font-size: clamp(4em, 8vw, 8em); 
+}
+
+h2 {
+  font-size: 3em;
+  font-size: clamp(3em, 6vw, 8em);
+  text-align: left; 
 }
 
 button {
   font-family: var(--font-sans-serif);
+  font-size: 1.25em;
   font-size: clamp(1.25em, 1.75vw, 3em); 
-  padding: 0.25em 1.5em;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -38,9 +51,8 @@ button {
 
 main {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
   text-align: center;
   height: 100vh;
   width: 100%;
@@ -50,9 +62,8 @@ main {
 
 footer {
   position: absolute;
-  bottom: 10px;
-  text-align: center;
-  width: 100%;
+  bottom: 1em;
+  right: 1rem;
   color: var(--color-tan);
 }
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const BirdText = (birds = []) => {
   function describeBirds(birds) {
     const birdRecordings = birds.recordings || [];
@@ -36,7 +34,7 @@ const BirdText = (birds = []) => {
   }
 
   return (
-    <p>{describeBirds(birds.birds)}</p>
+    birds.birds.recordings ? describeBirds(birds.birds) : ""
   )
 }
 
