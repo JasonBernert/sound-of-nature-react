@@ -44,8 +44,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 
 ## APIs
+[xeno-canto](https://www.xeno-canto.org/)
 [suncalc / mooncalc](https://www.torsten-hoffmann.de/apis/suncalcmooncalc/link_en.html)
 
 ## Notes
 
 Fluid typography with CSS clamp()
+
+https://css-tricks.com/introduction-web-audio-api/
+

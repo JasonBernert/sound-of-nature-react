@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { Map, TileLayer } from 'react-leaflet';
 import BirdText from './components/birdText';
-import birdSounds from './components/BirdSounds';
-import getData from './dataHelper';
+import BirdSounds from './components/BirdSounds';
+import getData from './lib/dataHelper';
 
 import './App.css';
 import './styles/map.css';
@@ -45,7 +45,6 @@ function App() {
           loading: false,
         })
 
-        birdSounds();
       })
     }
   };
@@ -59,6 +58,7 @@ function App() {
           ) : (
             <h2>
               <BirdText birds={state.birdData}/>
+              <BirdSounds />
             </h2>
           )
         }

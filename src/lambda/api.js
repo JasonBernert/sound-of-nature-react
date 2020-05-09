@@ -1,7 +1,7 @@
 const https = require('https');
 const url = require('url');
 
-function getData(callback, path) {
+function getData(callback, path, type) {
   const clientReq = https.request(
     {
       ...url.parse(path),
@@ -23,7 +23,7 @@ function getData(callback, path) {
         callback(null, {
           statusCode: 200,
           headers: {
-            'content-type': 'application/json',
+            'content-type': type || 'application/json',
             'Access-Control-Allow-Origin': '*',
           },
           body: rawData,
@@ -36,5 +36,6 @@ function getData(callback, path) {
 
 exports.handler = async (event, context, callback) => {
   const path = event.queryStringParameters.query;
-  getData(callback, path);
+  const type = event.queryStringParameters.type;
+  getData(callback, path, type);
 }

@@ -1,21 +1,37 @@
-import getData from '../dataHelper';
+import React from 'react';
+import { Sound, Buffer } from '../lib/audioHelpers';
 
-const birdSounds = (birds = []) => {
-  let birdBuffer = null;
+const BirdSounds = (birds = []) => {
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
-  var context = new AudioContext();
+  const context = new AudioContext();
 
-  const fileName = 'XC402959-180212_03%20Northern%20Pygmy%20Owl%20Jasper.mp3';
+  const fileName = 'XC402959-180212_03 Northern Pygmy Owl Jasper.mp3';
   const url = `https://www.xeno-canto.org/sounds/uploaded/JHFICMRVUX/${fileName}`;
-  const birdMp3 = getData(url, false);
+  const apiEndpoint = `http://localhost:9000/.netlify/functions/api/?type=audio/mp3&query=${url}`;
+  // const birdMp3 = getData(url, false);
 
-  // audioBuffer not working?  load mp3?
-  // birdMp3.then(data => {
-  //   context.decodeAudioData(
-  //     Buffer.from(data), 
-  //     buffer => birdBuffer = buffer
-  //   );
-  // });
+  let sounds = [
+    'https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/G4.mp3',
+    'https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/A4.mp3',
+    apiEndpoint
+  ]
+
+  let buffer = new Buffer(context, sounds);
+  buffer.getBuffer();
+
+  function playGuitar() {
+    const guitar = new Sound(context, buffer.getSound(2));
+    guitar.play();
+  }
+
+  return (
+    <button 
+    type="submit" 
+    onClick={playGuitar} 
+    >
+      play
+    </button>
+  )
 }
 
-export default birdSounds;
+export default BirdSounds;
