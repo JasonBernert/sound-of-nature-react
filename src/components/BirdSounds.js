@@ -13,14 +13,14 @@ const BirdSounds = (birds = []) => {
   let sounds = [
     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/G4.mp3',
     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/A4.mp3',
-    apiEndpoint
+    // apiEndpoint
   ]
 
   let buffer = new Buffer(context, sounds);
   buffer.getBuffer();
 
   function playGuitar() {
-    const guitar = new Sound(context, buffer.getSound(2));
+    const guitar = new Sound(context, buffer.getSound(0));
     guitar.play();
   }
 
