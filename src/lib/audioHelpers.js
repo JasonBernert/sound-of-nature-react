@@ -1,4 +1,4 @@
-class Sound {
+export class Sound {
   constructor(context, buffer) {
     this.context = context;
     this.buffer = buffer;
@@ -25,7 +25,7 @@ class Sound {
   }
 }
 
-class Buffer {
+export class Buffer {
   constructor(context, urls) {  
     this.context = context;
     this.urls = urls;
@@ -63,8 +63,3 @@ class Buffer {
     return this.buffer[index];
   }
 }
-
-module.exports = {
-  Sound,
-  Buffer
-};
