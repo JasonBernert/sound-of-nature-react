@@ -1,7 +1,6 @@
 const BirdText = (birds = []) => {
   function describeBirds(birds) {
     const birdRecordings = birds.recordings || [];
-    let birdList = [];
     const uniqueBirds = [];
     const usableBirds = [];
     let birdDescription = '';
@@ -15,26 +14,22 @@ const BirdText = (birds = []) => {
         }
       });
   
-      // Pull three random birds
-      birdList = usableBirds.sort(() => 0.5 - Math.random()).slice(0, 3);
+      const birdList = usableBirds.sort(() => 0.5 - Math.random()).slice(0, 3);
   
       if (birdList.length === 3) {
-        birdDescription = `You can hear the ${birdList[0].en}, ${birdList[1].en} and ${birdList[2].en}.`;
+        birdDescription = `You hear the ${birdList[0].en}, ${birdList[1].en} and ${birdList[2].en}.`;
       } else if (birdList.length === 2) {
-        birdDescription = `You can hear the ${birdList[0].en} and ${birdList[1].en}.`;
+        birdDescription = `You hear the ${birdList[0].en} and ${birdList[1].en}.`;
       } else if (birdList.length === 1) {
-        birdDescription = `You can hear the ${birdList[0].en}.`;
+        birdDescription = `You hear the ${birdList[0].en}.`;
       }
     }
   
-    if (birdList.length > 0) {
-      return birdDescription;
-    }
-    console.error('There are no bird recordings for this area!');
+    return birdDescription;
   }
 
   return (
-    birds.birds.recordings ? describeBirds(birds.birds) : ""
+    describeBirds(birds.birds)
   )
 }
 

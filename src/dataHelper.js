@@ -1,9 +1,7 @@
-const makeSearchBox = ([lat,lng]) => `${lat - 0.5},${lng - 0.5},${lat + 0.5},${lng + 0.5}`;
-
-const getData = (coordinates) => {     
+const getData = (url, json = true) => {     
   const promise = new Promise(((resolve) => {
-    fetch(`http://localhost:9000/.netlify/functions/api/?query=box:${makeSearchBox(coordinates)}`)
-      .then((response) => response.json())
+    fetch(`http://localhost:9000/.netlify/functions/api/?query=${url}`)
+      .then((response) => json ? response.json() : response)
       .then((data) => {
         resolve(data);
       }).catch((err) => {  

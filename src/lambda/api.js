@@ -1,11 +1,10 @@
 const https = require('https');
 const url = require('url');
-const baseUrl = "https://www.xeno-canto.org/api/2/recordings?query=";
 
-function getBirds(callback, query) {
+function getData(callback, path) {
   const clientReq = https.request(
     {
-      ...url.parse(`${baseUrl}${query}`),
+      ...url.parse(path),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -36,6 +35,6 @@ function getBirds(callback, query) {
 }
 
 exports.handler = async (event, context, callback) => {
-  const query = event.queryStringParameters.query;
-  getBirds(callback, query);
+  const path = event.queryStringParameters.query;
+  getData(callback, path);
 }

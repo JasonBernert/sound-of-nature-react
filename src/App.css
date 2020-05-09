@@ -39,20 +39,40 @@ button {
   font-size: clamp(1.25em, 1.75vw, 3em); 
   width: 7em;
   height: 7em;
-  border-radius: 50%;
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border: 0.1em solid white;
+  border: 2px solid white;
+  border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
   pointer-events: all;
+  margin-bottom: 80px;
+  transition: border 0.86s;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.loading {
+  color: transparent;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 main {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
   height: 100vh;
   width: 100%;
